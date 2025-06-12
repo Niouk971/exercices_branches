@@ -11,9 +11,25 @@ message = `Bonjour ${firstName} !`;
 
 // etape 3
 
-function sayHello(){
-    console.log(message);
+function sayHello() {
+    console.log(message)
 }
 
 sayHello();
+
+// etape 4
+
+function sayHello(firstName, hour) {
+    if (hour >= 18) {
+        return `Bonsoir ${firstName} !`;
+    } else {
+        return message
+    }
+}
+
+console.log(sayHello("Beyonce", 11));
+console.log(sayHello("Beyonce", 18));
+console.log(sayHello("Beyonce", 17));
+
+// etape 5
 
