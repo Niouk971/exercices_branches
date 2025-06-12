@@ -31,5 +31,10 @@ console.log(sayHello("Beyonce", 11));
 console.log(sayHello("Beyonce", 18));
 console.log(sayHello("Beyonce", 17));
 
-// etape 5
+// etape 5 (fichier index.html)
 
+// etape 6
+
+document.querySelector('h1').innerText = message;
+
+prompt(sayHello(firstName));
