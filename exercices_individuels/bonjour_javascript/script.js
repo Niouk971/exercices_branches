@@ -2,12 +2,12 @@
 
 let message = "Bonjour !";
 
-// console.log(message);
+console.log(message);
 
 let firstName = "Beyonce";
 message = `Bonjour ${firstName} !`;
 
-// console.log(message);
+console.log(message);
 
 // etape 3
 
@@ -23,7 +23,7 @@ function sayHello(firstName, hour) {
     if (hour >= 18) {
         return `Bonsoir ${firstName} !`;
     } else {
-        return message
+        return message;
     }
 }
 
@@ -35,6 +35,16 @@ console.log(sayHello("Beyonce", 17));
 
 // etape 6
 
-document.querySelector('h1').innerText = message;
+function sayHello2(firstName, hour) {
+    if (hour >= 18) {
+        message = `Bonsoir ${firstName} !`
+        document.querySelector('h1').innerText = message;
+        return message
+    } else {
+        message = `Bonjour ${firstName} !`
+        document.querySelector('h1').innerText = message;
+        return message
+    }
+}
 
-prompt(sayHello(firstName));
+console.log(sayHello2(prompt("Entrez votre prénom :"), 13))
