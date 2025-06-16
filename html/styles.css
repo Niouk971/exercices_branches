@@ -1,0 +1,18 @@
+body {
+    background-color:pink;
+}
+
+h1, p , li {
+    text-align: center;
+    color:hotpink;
+}
+
+img {
+    display: block;
+    width: 30%;
+    margin: auto;
+    border-radius: 50%;
+    border-color: hotpink;
+    border-width: 50%;
+}
+
