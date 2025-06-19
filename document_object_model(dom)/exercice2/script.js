@@ -17,60 +17,55 @@ const horoscope = [
   }
 ];
 
-for (const item of horoscope) {
-  document.body.innerHTML += `<article><h2>${item.sign}</h2><p>${item.description}</p></article>`;
-}
+// soluce 1
 
 // TODO: recupère l'élément <div id="horoscope">
-// const getHoroscope = document.getElementById("horoscope");
-// const afficherHoroscope = document.querySelector("div");
 
-// let createH2 = document.createElement("h2");
-// let createP = document.createElement("p");
+const getHoroscope = document.getElementById("horoscope");
 
-// let h2Belier = document.createElement("h2");
-// let pBelier = document.createElement("p");
+// TODO: remplace le console.log par le code qui ajoute un article
+// pour chaque item avec le format suivant :
 
-// h2Belier.textContent = horoscope[0].sign;
-// pBelier.textContent = horoscope[0].description;
-
-// console.log(h2Belier)
-// console.log(pBelier)
+// <article>
+//   <h2>Sign</h2>
+//   <p>Description</p>
+// </article>
 
 
+for (const item of horoscope) {
+  getHoroscope.innerHTML += `
+    <article>
+      <h2>${item.sign}</h2>
+      <p>${item.description}</p>
+    </article>
+  `;
+}
 
-// item === horoscope[0]
-// createH2.innerText = horoscope[0].sign
-// console.log(createH2)
-// createP.innerText = horoscope[0].description
-// console.log(createP)
+// soluce 2
 
-  // TODO: remplace le console.log par le code qui ajoute un article
-	// pour chaque item avec le format suivant :
-	// <article>
-	//   <h2>Sign</h2>
-	//   <p>Description</p>
-	// </article>
+// const container = document.getElementById('horoscope');
 
+// for (const item of horoscope) {
+//   const article = document.createElement('article');
+//   const h2 = document.createElement('h2');
+//   h2.textContent = item.sign;
+//   const p = document.createElement('p');
+//   p.textContent = item.description;
 
-  // if (item === horoscope[0]) {
-  //   afficherHoroscope.innerText = `${horoscope[0].sign} : ${horoscope[0].description}`
-  //   console.log(item.sign, item.description);
-  // } else if (item === horoscope[1]) {
-  //   afficherHoroscope.innerText = `${horoscope[1].sign} : ${horoscope[1].description}`
-  //   console.log(item.sign, item.description);
-  // } else if (item === horoscope[2]) {
-  //   afficherHoroscope.innerText = `${horoscope[2].sign} : ${horoscope[2].description}`
-  //   console.log(item.sign, item.description);
-  // } else if (item === horoscope[3]) {
-  //   afficherHoroscope.innerText = `${horoscope[3].sign} : ${horoscope[3].description}`
-  //   console.log(item.sign, item.description);
-  // }
+//   article.appendChild(h2);
+//   article.appendChild(p);
+//   container.appendChild(article);
+// }
 
+// soluce 3
 
-  // if (item === horoscope[0]) {
-  //   afficherHoroscope.innerText = `${horoscope[0].sign} : ${horoscope[0].description}`
-  //   console.log(item.sign, item.description);
-  // h2Belier.textContent = horoscope[0].sign;
-  // pBelier.textContent = horoscope[0].description;
-  // }
+// const container = document.getElementById('horoscope');
+
+// horoscope.forEach((item) => {
+//   container.innerHTML += `
+//     <article>
+//       <h2>${item.sign}</h2>
+//       <p>${item.description}</p>
+//     </article>
+//   `;
+// });
