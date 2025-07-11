@@ -1,17 +1,17 @@
 const form = document.querySelector('#form');
 const button = document.querySelector('#button');
+const caractereText = document.querySelector('#caractere-text');
+const morse = document.querySelector('#morse-text');
 
 console.log(button)
 
 // Etape 1
 
-const text = ["H", "e", "l", "l", "o", ",", " ", "w", "o", "r", "l", "d"]
-
 function getLatinCharacterList(text) {
-    return text.join('')
+    return text.split('')
 }
 
-console.log(getLatinCharacterList(text))
+console.log(getLatinCharacterList('HELLO, WORLD'))
 
 
 // Etape 2
@@ -45,45 +45,43 @@ const latinToMorse = {
 	'Z':'--..'
 }
 
-// console.log(latinToMorse['A'])
-
-
-caractere = latinToMorse['A']
-
 function translateLatinCharacter(caractere) {
-    return caractere
+    return latinToMorse[caractere]
 }
 
-console.log(translateLatinCharacter(caractere))
+console.log(translateLatinCharacter('N'))
 
 
-// function encode(text) {
-//     text.caractere.forEach('click', () => {
+// Etape 3
 
-//     })
-//     getLatinCharacterList(text)
-// }
+function encode(text) {
 
-// console.log(encode(text))
+    for(let i = 0; i < text.length; i ++);
+        getLatinCharacterList(text);
+        translateLatinCharacter(caractere);
+
+}
+
+console.log(encode('HELLO, WORLD'));
 
 
 form.addEventListener('submit', (event) => {
 
     event.preventDefault()
-    const caractere = document.querySelector('#caractere-text').value.trim();
+    const caractereText = document.querySelector('#caractere-text').value.trim();
     const morse = document.querySelector('#morse-text').value.trim();
-    console.log(caractere);
+    console.log(caractereText);
     console.log(morse);
 
-    addCaractereToMorse(caractere, morse);
+    addCaractereToMorse(caractereText, morse);
 
 })
 
-function addCaractereToMorse(caractere, morse) {
+function addCaractereToMorse(caractereText, morse) {
     
     const showCaractere = document.createElement('p');
     showCaractere.classList.add('caractere');
-    showCaractere.innerText = caractere;
+    showCaractere.innerText = caractereText;
 
 
     const showMorse = document.createElement('p');
@@ -91,6 +89,11 @@ function addCaractereToMorse(caractere, morse) {
     showMorse.innerText = morse;
 
     const divTranslation = document.createElement('div');
-    
+    divTranslation.classList.add('translation');
+
+    divTranslation.appendChild(showCaractere);
+    divTranslation.appendChild(showMorse);
+
+    document.querySelector('#translation-list').appendChild(divTranslation);
 
 }
