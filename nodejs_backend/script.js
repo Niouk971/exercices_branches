@@ -4,7 +4,11 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors({ origin: "http://127.0.0.1:5500/menu" }));
+app.use(express.json());
+
+// app.use(cors({ origin: "http://127.0.0.1:5500/menu" }));
+
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Accueil");
@@ -25,5 +29,15 @@ app.get("/menu/:id", (req, res) => {
 app.get("/coucou", (req, res) => {
     res.send("Coucou");
 });
+
+app.post("/orders", (req, res) => {  
+console.log("[POST /orders] body reçu:", req.body);  
+const { id, plate, clientName } = req.body;    
+if (!id || !plate || !clientName) {    
+return res.status(400).json({ error: "Champs manquants ou invalides" });  
+}  
+console.log(`[COMMANDE REÇUE] id=${id} | plat="${plate}" | client="${clientName}"`);  
+return res.status(201).json({ ok: true, message: `Commande reçue ${plate} pour ${clientName}`}); 
+ });
 
 app.listen(3000, () => { console.log("Serveur lancé sur http://localhost:3000"); });
