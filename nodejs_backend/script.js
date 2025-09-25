@@ -3,6 +3,8 @@ import data from "./data.json" with { type: "json" };
 import cors from "cors";
 import { Pool } from "pg";
 import dotenv from "dotenv";
+import path from "path";
+
 dotenv.config();
 
 
