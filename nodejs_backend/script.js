@@ -1,14 +1,31 @@
 import express from "express";
 import data from "./data.json" with { type: "json" };
 import cors from "cors";
+import { Pool } from "pg";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
+// const PORT = process.env.PORT || 3000;
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        require: true,
+    },
+});
+
 
 app.use(express.json());
 
-// app.use(cors({ origin: "http://127.0.0.1:5500/menu" }));
+app.use(cors({ origin: "http://127.0.0.1:5500/menu" }));
 
-app.use(cors());
+// app.use(cors());
+
+
+const frontendPath = path.join(process.cwd(), "../nodejs_frontend");
+app.use(express.static(frontendPath));
+
 
 app.get("/", (req, res) => {
     res.send("Accueil");
@@ -26,18 +43,18 @@ app.get("/menu/:id", (req, res) => {
     res.json(plat);
 });
 
-app.get("/coucou", (req, res) => {
+app.get("/orders", (req, res) => {
     res.send("Coucou");
 });
 
-app.post("/orders", (req, res) => {  
-console.log("[POST /orders] body reçu:", req.body);  
-const { id, plate, clientName } = req.body;    
-if (!id || !plate || !clientName) {    
-return res.status(400).json({ error: "Champs manquants ou invalides" });  
-}  
-console.log(`[COMMANDE REÇUE] id=${id} | plat="${plate}" | client="${clientName}"`);  
-return res.status(201).json({ ok: true, message: `Commande reçue ${plate} pour ${clientName}`}); 
- });
+app.post("/orders", (req, res) => {
+    console.log("[POST /orders] body reçu:", req.body);
+    const { id, plate, clientName } = req.body;
+    if (!id || !plate || !clientName) {
+        return res.status(400).json({ error: "Champs manquants ou invalides" });
+    }
+    console.log(`[COMMANDE REÇUE] id=${id} | plat="${plate}" | client="${clientName}"`);
+    return res.status(201).json({ ok: true, message: `Commande reçue ${plate} pour ${clientName}` });
+});
 
 app.listen(3000, () => { console.log("Serveur lancé sur http://localhost:3000"); });
