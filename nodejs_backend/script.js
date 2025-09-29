@@ -13,7 +13,7 @@ const app = express();
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
-        require: true,
+        rejectUnauthorized: false,
     },
 });
 
@@ -34,8 +34,29 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/menu", (req, res) => {
-    res.json(data);
+// Ajoutez cette fonction pour tester la connexion
+const testDbConnection = async () => {
+    try {
+        const client = await pool.connect();
+        console.log('Connexion à la base de données réussie !');
+        client.release();
+    } catch (err) {
+        console.error('Erreur de connexion à la base de données:', err);
+    }
+};
+
+// Appelez la fonction de test
+testDbConnection();
+
+// Exemple de requête pour récupérer les plats depuis la base de données
+app.get("/menus", async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM menus');
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Erreur serveur" });
+    }
 });
 
 app.get("/menu/:id", (req, res) => {
