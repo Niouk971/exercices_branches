@@ -1,3 +1,5 @@
+import { Button } from './Button';
+
 export const SeeName = ({ name, setName }) => {
 
     return (
@@ -5,7 +7,7 @@ export const SeeName = ({ name, setName }) => {
         name.map((pers, id) => (
             <div key={id}>
                 <h1>{pers}</h1>
-                <button onClick={() => setName(name.filter((_, index) => index !== id))}>x</button>
+                <Button name={name} setName={setName} id={id}/>
             </div>
         ))
     );
