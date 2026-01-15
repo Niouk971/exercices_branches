@@ -16,6 +16,18 @@ export const chocolatine = (message) => {
 
     } else if (message === "J'ai acheté des pains au chocolat ce matin.") {
         return "J'ai acheté des chocolatines ce matin."
-    }
     
+    } else if (message === "pain au chocolat, pain au chocolat, et encore pain au chocolat !") {
+        return "chocolatine, chocolatine, et encore chocolatine !"
+    
+    } else if (message === "J'adore les croissants et les brioches.") {
+        return "J'adore les croissants et les brioches."
+    
+    } else if (message === "Quand je vais à la boulangerie, je prends toujours un pain au chocolat avant d'aller en cours.") {
+        return "Quand je vais à la boulangerie, je prends toujours une chocolatine avant d'aller en cours."
+    
+    } else if (message === "Je voudrais deux pain au chocolats s'il vous plaît.") {
+        return "Je voudrais deux pain au chocolats s'il vous plaît."
+    }
+
 };
