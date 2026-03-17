@@ -4,7 +4,9 @@
  * @param {string} str the input name
  * @returns {string} the new output name
  */
+
 export const toCamelCase = (str) => {
+
     const words = str.toLowerCase().split("_");
 
     const first = words.shift(); // first word stays the same
@@ -16,6 +18,7 @@ export const toCamelCase = (str) => {
     }
 
     return result;
+
 };
 
 /**
@@ -24,4 +27,16 @@ export const toCamelCase = (str) => {
  * @param {string} str the input name
  * @returns {string} the new output name
  */
-export const toSnakeCase = (str) => {};
+
+export const toSnakeCase = (str) => {
+
+    const words = str.toLowerCase()
+
+    for (const word of words) {
+        const replaced = word.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+    }
+
+
+    return result;
+
+};

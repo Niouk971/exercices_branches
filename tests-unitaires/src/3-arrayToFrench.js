@@ -9,4 +9,26 @@
  *      arrayToFrench(['un', 'deux', 'trois', 'soleil']); // returns "un, deux, trois et soleil"
  *      arrayToFrench(['noir', 'blanc']); // returns "noir et blanc"
  */
-export const arrayToFrench = (array) => {};
+
+export const arrayToFrench = (array) => {
+
+    // array = [];
+
+    // array = ['un', 'deux', 'trois', 'soleil'];
+
+    array = ['noir', 'blanc'];
+
+
+    const words = [array.slice(0, -1).join(", "), array.slice(-1)[0]].join(array.length < 2 ? '' : ' et ');
+
+    if (array === 'un', 'deux', 'trois', 'soleil') {
+        return words
+    } else if (array === 'noir', 'blanc') {
+        return words
+    }
+
+    return words;
+
+};
+
+console.log(arrayToFrench());

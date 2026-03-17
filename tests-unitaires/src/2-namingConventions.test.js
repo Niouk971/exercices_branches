@@ -9,3 +9,7 @@ test("Some simple cases for the toSnakeCase function", () => {
     expect(toSnakeCase("myFunction")).toBe("my_function");
     expect(toSnakeCase("anotherFunction")).toBe("another_function");
 });
+
+test("Some simple cases for the toCamelCase function", () => {
+    expect(toCamelCase("test_test")).toBe("testTest");
+});
